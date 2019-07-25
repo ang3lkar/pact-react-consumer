@@ -1,0 +1,182 @@
+{
+  "consumer": {
+    "name": "on-demand-app"
+  },
+  "provider": {
+    "name": "ats-api-job-titles"
+  },
+  "interactions": [
+    {
+      "description": "a GET request for job titles",
+      "providerState": "job descriptions exist",
+      "request": {
+        "method": "GET",
+        "path": "/ats/api/job_titles",
+        "headers": {
+          "Accept": "application/json; charset=utf-8"
+        },
+        "matchingRules": {
+          "$.headers.Accept": {
+            "match": "regex",
+            "regex": "application\\/json; *charset=utf-8"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "data": [
+            {
+              "id": "972311621",
+              "type": "job_title",
+              "attributes": {
+                "name": "Area Manager"
+              },
+              "meta": {
+              }
+            }
+          ],
+          "meta": {
+            "ctx": "37394d02-f2fd-47e6-a866-7ec36f22494b"
+          }
+        },
+        "matchingRules": {
+          "$.headers.Content-Type": {
+            "match": "regex",
+            "regex": "application\\/json; *charset=utf-8"
+          },
+          "$.body": {
+            "match": "type"
+          },
+          "$.body.data": {
+            "min": 1
+          },
+          "$.body.data[*].*": {
+            "match": "type"
+          },
+          "$.body.data[*].id": {
+            "match": "type"
+          },
+          "$.body.data[*].attributes.name": {
+            "match": "type"
+          },
+          "$.body.meta.ctx": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "a GET request for job with id=43573271",
+      "providerState": "job with id=43573271 exists",
+      "request": {
+        "method": "GET",
+        "path": "/ats/api/jobs/43573271",
+        "headers": {
+          "Accept": "application/json; charset=utf-8",
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo4MzAxMzg3NzQsImFjY291bnRfaWQiOjUxMTE3Njk1NywibWVtYmVyX2lkIjo1ODgzMTI3NDMsImlzc3VlciI6IldvcmthYmxlIiwiaXNzdWVkX2F0IjoiMjAxOS0wNy0yOSAwOToxODo0OCBVVEMiLCJhY2NfdWlkIjoiMGI4ZDVkZmMtNWJiMi01YWRjLTgxMWItZjU1ODMyYjA5ZmRiIiwic3ViIjoiZDZmNTdlYWEtZGE4YS01YzU5LWExYTEtOGViZTM0MDM0YjhhIn0.DYBFi9Wwcv07m8swpPuiMbopcyn59qLv4zNDjJZqBaw"
+        },
+        "matchingRules": {
+          "$.headers.Accept": {
+            "match": "regex",
+            "regex": "application\\/json; *charset=utf-8"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "data": {
+            "id": "43573271",
+            "type": "job",
+            "attributes": {
+              "title": "Copilot",
+              "industry": null,
+              "country_code": "US",
+              "country_name": "United States",
+              "state_code": "CA",
+              "zip_code": null,
+              "city": "Los Angeles",
+              "subregion": "California",
+              "keywords": [
+                "ruby"
+              ],
+              "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+              "requirements": null,
+              "benefits": null
+            },
+            "relationships": {
+              "account": {
+                "data": {
+                  "id": "511176957",
+                  "type": "account"
+                }
+              }
+            },
+            "meta": {
+            }
+          },
+          "meta": {
+            "ctx": "37394d02-f2fd-47e6-a866-7ec36f22494b"
+          }
+        },
+        "matchingRules": {
+          "$.headers.Content-Type": {
+            "match": "regex",
+            "regex": "application\\/json; *charset=utf-8"
+          },
+          "$.body": {
+            "match": "type"
+          },
+          "$.body.data": {
+            "match": "type"
+          },
+          "$.body.data.id": {
+            "match": "type"
+          },
+          "$.body.data.attributes.title": {
+            "match": "type"
+          },
+          "$.body.data.attributes.country_code": {
+            "match": "type"
+          },
+          "$.body.data.attributes.country_name": {
+            "match": "type"
+          },
+          "$.body.data.attributes.state_code": {
+            "match": "type"
+          },
+          "$.body.data.attributes.city": {
+            "match": "type"
+          },
+          "$.body.data.attributes.subregion": {
+            "match": "type"
+          },
+          "$.body.data.attributes.keywords": {
+            "match": "type"
+          },
+          "$.body.data.attributes.description": {
+            "match": "type"
+          },
+          "$.body.data.relationships.account.data.id": {
+            "match": "type"
+          },
+          "$.body.meta.ctx": {
+            "match": "type"
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}

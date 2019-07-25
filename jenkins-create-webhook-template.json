@@ -1,0 +1,20 @@
+{
+  "provider": {
+    "name": "ats-api-job-titles"
+  },
+  "events": [
+    {
+      "name": "contract_content_changed"
+    }
+  ],
+  "request": {
+    "method": "POST",
+    "url": "https://jenkins-master.workableops.net/job/pact-ats-provider-verification/job/pact_test/build",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "Basic YW5nZWxvczoxMWIwMzlkYWUzOTMzYTZhZTE4NzZkNjEyMjIxYTMwOWE1"
+    },
+    "body": {
+    }
+  }
+}
